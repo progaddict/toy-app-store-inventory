@@ -1,0 +1,70 @@
+# https://marketplace.visualstudio.com/items?itemName=humao.rest-client
+
+@protocol = http
+@host = 127.0.0.1
+@port = 8080
+@apiVersion = v1
+
+##################################################
+# get all products
+
+GET {{protocol}}://{{host}}:{{port}}/api/{{apiVersion}}/product
+
+##################################################
+# add products
+# cheese with ID 30 will be immediately disposed
+# because it expires in 20 days which is too little
+
+POST {{protocol}}://{{host}}:{{port}}/api/{{apiVersion}}/product
+content-type: application/json
+
+[
+    {
+    "id": 10,
+    "name": "cheese",
+    "description": "test cheese 1",
+    "expirationTimestamp": "{{$timestamp 70 d}}",
+    "basePriceInCents": 700,
+    "startQuality": 40
+    },
+    {
+    "id": 20,
+    "name": "cheese",
+    "description": "test cheese 2",
+    "expirationTimestamp": "{{$timestamp 75 d}}",
+    "basePriceInCents": 800,
+    "startQuality": 50
+    },
+    {
+    "id": 30,
+    "name": "cheese",
+    "description": "test cheese 3",
+    "expirationTimestamp": "{{$timestamp 20 d}}",
+    "basePriceInCents": 300,
+    "startQuality": 60
+    },
+    {
+    "id": 40,
+    "name": "wine",
+    "description": "test wine 1",
+    "expirationTimestamp": "{{$timestamp 5 d}}",
+    "basePriceInCents": 1000,
+    "startQuality": 10
+    },
+    {
+    "id": 50,
+    "name": "wine",
+    "description": "test wine 2",
+    "expirationTimestamp": "{{$timestamp 15 d}}",
+    "basePriceInCents": 1500,
+    "startQuality": -15
+    }
+]
+
+##################################################
+# delete all products
+DELETE {{protocol}}://{{host}}:{{port}}/api/{{apiVersion}}/product
+
+##################################################
+# make a forecast for the next 10 days
+GET {{protocol}}://{{host}}:{{port}}/api/{{apiVersion}}/product/forecast?days=10

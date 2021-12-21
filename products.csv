@@ -1,0 +1,6 @@
+"id","name","description","expirationTimestamp","basePriceInCents","startQuality"
+10,"cheese","test cheese 1","2022-02-21T10:00:00.000Z",500,30
+20,"cheese","test cheese 2","2022-02-22T10:00:00.000Z",600,40
+30,"cheese","test cheese 3","2022-02-23T10:00:00.000Z",700,50
+40,"wine","test wine 1","2022-02-24T10:00:00.000Z",1050,25
+50,"wine","test wine 2","2022-02-25T10:00:00.000Z",1299,37
